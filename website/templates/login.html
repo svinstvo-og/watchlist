@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="auth_content">
+    <div class="logo-auth">WatchList</div>
+    <div class="form_body">
+        <form action="/submit_login" method="POST">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <label for="pwd">Password:</label><br>
+            <input type="password" id="pwd" name="pwd"> 
+            <br>
+            <button type="submit">Log in</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
