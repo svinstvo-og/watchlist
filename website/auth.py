@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template, request
+from . import db
+from .models import User
 
 auth = Blueprint('auth', __name__) 
 
@@ -18,5 +20,10 @@ def signup():
 def submit_signup():
     username = request.form['username']
     pwd = request.form['pwd']
+
+    new_user = User(username=username, pwd=pwd)
+
+    db.session.add(new_user)
+    db.session.commit()
 
     return f'Username: {username}, password: {pwd}'
