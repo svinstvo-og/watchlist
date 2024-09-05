@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from . import db
-from .views import libriary
+from .views import home
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -20,7 +20,7 @@ def submit_login():
 
         if user and check_password_hash(user.pwd, pwd):
             flash('Logged in successfully!', 'success')
-            return libriary()
+            return home()
         else:
             flash('Login failed. Check your username and/or password.', 'error')
             return redirect(url_for('auth.login'))

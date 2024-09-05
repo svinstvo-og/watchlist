@@ -1,0 +1,104 @@
+/* Body styling */
+body {
+    background-color: #333;
+    color: #fff;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header styling */
+.header {
+    background-color: rgba(255, 255, 255, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.header_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    height: 100%;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Auth warning container */
+.auth-warning-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 60px; /* Leave space for the header */
+    box-sizing: border-box;
+}
+
+.auth-warning-content {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.warning-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.warning-text {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #e0e0e0;
+}
+
+/* Button styles */
+.cta-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cta-button {
+    padding: 12px 30px;
+    font-size: 18px;
+    background-color: #f06292;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    flex-grow: 1;
+    margin: 0 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button.secondary {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.cta-button:hover {
+    background-color: #ec407a;
+}
+
+.cta-button.secondary:hover {
+    background-color: #d0d0d0;
+}
+
+.cta-button:active {
+    background-color: #d81b60;
+}
+
+.cta-button.secondary:active {
+    background-color: #c0c0c0;
+}
