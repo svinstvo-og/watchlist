@@ -8,7 +8,28 @@
 </head>
 <body>
     <div class="background"></div>
-    {% block body %}
-    {% endblock %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">
+                        {{ message }}
+                        <span class="close-btn">&times;</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% block body %}{% endblock %}
+
+    <script>
+        document.querySelectorAll('.close-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.parentElement.style.display = 'none';
+            });
+        });
+    </script>
 </body>
 </html>

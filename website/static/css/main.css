@@ -93,3 +93,65 @@ button[type="submit"]:hover {
 button[type="submit"]:active {
     background-color: #d81b60; /* Even darker pink on click */
 }
+
+
+/* Flash Message Container */
+.flashes {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    width: auto;
+    
+}
+
+/* General Flash Message Style */
+.flashes li {
+    margin-bottom: 15px;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #fff;
+    opacity: 0.9;
+    transition: opacity 0.6s ease-out;
+}
+
+/* Success Message */
+.success {
+    background-color: #4CAF50; /* Green */
+    border-left: 6px solid #46a049;
+}
+
+/* Error Message */
+.error {
+    background-color: #f44336; /* Red */
+    border-left: 6px solid #e53935;
+}
+
+/* Warning Message */
+.warning {
+    background-color: #ff9800; /* Orange */
+    border-left: 6px solid #fb8c00;
+}
+
+/* Info Message */
+.info {
+    background-color: #2196F3; /* Blue */
+    border-left: 6px solid #1e88e5;
+}
+
+/* Dismiss button */
+.flashes li .close-btn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.flashes li .close-btn:hover {
+    color: #000;
+}

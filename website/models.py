@@ -1,4 +1,4 @@
-from . import db, create_app
+from . import db
 
 class User(db.Model):
     __tablename__ = 'users'  # Optional: explicitly set the table name
