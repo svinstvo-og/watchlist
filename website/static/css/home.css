@@ -182,3 +182,64 @@ body {
 .submit-btn:hover {
     background-color: #ec407a;
 }
+
+/* Container for all shows */
+.shows-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Individual show item */
+.show-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #444; /* Dark background for the show container */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+    transition: transform 0.3s ease;
+}
+
+.show-item:hover {
+    transform: translateY(-5px); /* Slight hover effect */
+}
+
+/* Show details */
+.show-details {
+    color: #fff;
+}
+
+.show-details h3 {
+    margin: 0;
+    font-size: 24px;
+    color: #f06292; /* Pink title color */
+}
+
+.show-details p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #ccc; /* Subtle text for status */
+}
+
+/* Delete button */
+.delete-btn {
+    background-color: transparent;
+    color: #f06292; /* Pink color for delete */
+    border: 2px solid #f06292; /* Border for the button */
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #f06292; /* Pink background on hover */
+    color: white; /* White text on hover */
+}
+
+.delete-btn:active {
+    background-color: #d81b60; /* Darker pink on click */
+}

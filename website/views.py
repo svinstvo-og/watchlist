@@ -8,7 +8,7 @@ views = Blueprint('views', __name__)
 @views.route('/')
 def home():
     if current_user.is_authenticated:
-        user_shows = Show.query.all()
+        user_shows = Show.query.filter_by(user_id=current_user.id).all()
         return render_template('home.html', shows=user_shows)
     else:
         return render_template('home_to_login.html')
@@ -35,6 +35,19 @@ def add_show():
 
     return redirect(url_for('views.home'))
 
+@views.route('/delete_show/<int:show_id>', methods = ['POST'])
+@login_required
+def delete_show(show_id):
+    show_to_delete = Show.query.get_or_404(show_id)
+    
+    if show_to_delete.user_id != current_user.id:
+        flash('You do not have permission to delete this show.', category='error')
+        return redirect(url_for('views.home'))
+
+    db.session.delete(show_to_delete)
+    db.session.commit()
+    flash('Show deleted successfully!', category='success')
+    return redirect(url_for('views.home'))
 
 #TEMP
 @views.route('/check_shows')
