@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="header">
+    <div class="header_content">
+        <div class="logo">WatchList</div>
+    </div>
+</div>
+
+<div class="auth-warning-container">
+    <div class="auth-warning-content">
+        <span class="warning-icon">⚠️</span>
+        <h2 class="warning-text">Please log in or sign up to access your library</h2>
+
+        <div class="cta-buttons">
+            <a href="{{ url_for('auth.login') }}" class="cta-button">Login</a>
+            <a href="{{ url_for('auth.signup') }}" class="cta-button secondary">Sign Up</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

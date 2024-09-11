@@ -1,25 +1,27 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<link rel="stylesheet" href="{{url_for('static', filename = 'css/home.css')}}">
 {% endblock %}
 
 {% block body %}
 <div class="header">
     <div class="header_content">
+        <!-- Logo aligned to the left -->
         <div class="logo">WatchList</div>
+        
+        <!-- User icon and Logout button aligned to the right -->
+        <div class="user-section">
+            <span class="user-icon">👤</span> <!-- Replace with an icon if needed -->
+            <form action="{{ url_for('auth.logout') }}" method="POST" style="display: inline;">
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        </div>
     </div>
 </div>
 
-<div class="auth-warning-container">
-    <div class="auth-warning-content">
-        <span class="warning-icon">⚠️</span>
-        <h2 class="warning-text">Please log in or sign up to access your library</h2>
-
-        <div class="cta-buttons">
-            <a href="{{ url_for('auth.login') }}" class="cta-button">Login</a>
-            <a href="{{ url_for('auth.signup') }}" class="cta-button secondary">Sign Up</a>
-        </div>
-    </div>
+<!-- Main content for logged-in users -->
+<div class="auth_content">
+    <h1>Hello, World!</h1>
 </div>
 {% endblock %}

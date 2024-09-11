@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask_login import login_user, logout_user, login_required, current_user
 from . import db
 from .views import home
 from .models import User
@@ -19,6 +20,7 @@ def submit_login():
         user = User.query.filter_by(username=username).first()
 
         if user and check_password_hash(user.pwd, pwd):
+            login_user(user)
             flash('Logged in successfully!', 'success')
             return home()
         else:
@@ -27,20 +29,20 @@ def submit_login():
 
     return render_template('login.html')
 
-@auth.route('/logout')
+@auth.route('/logout', methods = ['POST'])
 def logout():
-    return 'logout'
+    logout_user()
+    return redirect(url_for('auth.login'))
 
 @auth.route('/signup')
 def signup():
     return render_template('signup.html')
 
-@auth.route('/submit_signup', methods=['POST'])
+@auth.route('/submit_signup', methods=['POST', 'GET'])
 def submit_signup():
     username = request.form.get('username')
     pwd = request.form.get('pwd')
 
-    # Check if the username already exists
     existing_user = User.query.filter_by(username=username).first()
     if existing_user:
         flash('Username already exists. Please choose another one.', 'error')
@@ -48,10 +50,8 @@ def submit_signup():
 
     hashed_pwd = generate_password_hash(pwd, method='pbkdf2:sha256')
 
-    # Create a new user instance
     new_user = User(username=username, pwd=hashed_pwd)
 
-    # Add and commit the new user to the database
     db.session.add(new_user)
     db.session.commit()
 
