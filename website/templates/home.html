@@ -7,21 +7,74 @@
 {% block body %}
 <div class="header">
     <div class="header_content">
-        <!-- Logo aligned to the left -->
         <div class="logo">WatchList</div>
-        
-        <!-- User icon and Logout button aligned to the right -->
         <div class="user-section">
-            <span class="user-icon">👤</span> <!-- Replace with an icon if needed -->
-            <form action="{{ url_for('auth.logout') }}" method="POST" style="display: inline;">
-                <button type="submit" class="logout-btn">Logout</button>
+            <span class="user-icon">👤</span>
+            <form method="POST" action="{{ url_for('auth.logout') }}" style="display:inline;">
+                <button class="logout-btn" type="submit">Logout</button>
             </form>
         </div>
     </div>
 </div>
 
-<!-- Main content for logged-in users -->
-<div class="auth_content">
-    <h1>Hello, World!</h1>
+<div class="content">
+    <div class="layout-switcher">
+        <label for="layout-toggle">Layout:</label>
+        <input type="checkbox" id="layout-toggle" />
+    </div>
+
+    <button id="add-show-btn" class="add-show-btn">Add Show</button>
+
+    <!-- Add Show Modal -->
+    <div id="add-show-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Add a TV Show</h2>
+            <form action="{{ url_for('views.add_show') }}" method="POST">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="status">Status:</label>
+                <select id="status" name="status">
+                    <option value="watching">Watching</option>
+                    <option value="watched">Watched</option>
+                    <option value="want_to_watch">Want to Watch</option>
+                </select>
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description"></textarea>
+
+                <button type="submit" class="submit-btn">Add Show</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="shows">
+        {% for show in shows %}
+            <div class="show-item">
+                <h3>{{ show.title }}</h3>
+                <p>Status: {{ show.status }}</p>
+            </div>
+        {% else %}
+            <p>No shows found.</p>
+        {% endfor %}
+    </div>
 </div>
+
+<script>
+    document.getElementById('add-show-btn').addEventListener('click', function() {
+        document.getElementById('add-show-modal').style.display = 'block';
+    });
+
+    document.querySelector('.close-btn').addEventListener('click', function() {
+        document.getElementById('add-show-modal').style.display = 'none';
+    });
+
+    window.onclick = function(event) {
+        if (event.target === document.getElementById('add-show-modal')) {
+            document.getElementById('add-show-modal').style.display = 'none';
+        }
+    };
+</script>
+
 {% endblock %}

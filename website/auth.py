@@ -22,7 +22,7 @@ def submit_login():
         if user and check_password_hash(user.pwd, pwd):
             login_user(user)
             flash('Logged in successfully!', 'success')
-            return home()
+            return redirect(url_for('views.home'))
         else:
             flash('Login failed. Check your username and/or password.', 'error')
             return redirect(url_for('auth.login'))
