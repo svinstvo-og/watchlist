@@ -243,3 +243,43 @@ body {
 .delete-btn:active {
     background-color: #d81b60; /* Darker pink on click */
 }
+
+/* Individual show item */
+.show-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #444; /* Dark background for the show container */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+    transition: transform 0.3s ease;
+    gap: 20px;
+}
+
+.show-poster img {
+    width: 100px;  /* Fixed width for all posters */
+    height: 150px; /* Fixed height for all posters */
+    object-fit: cover;  /* Ensures the image fits inside the container without distorting */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.no-poster {
+    width: 100px;
+    height: 150px;
+    background-color: #555;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.status {
+    font-size: 14px;
+    color: #ccc;
+    margin-left: 10px;
+    font-style: italic;
+}
